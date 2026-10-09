@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Hogarix · Servicios para el hogar</title>
+    <meta name="description" content="Especialistas verificados para tu hogar: plomería, electricidad, limpieza y más." />
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#1B4332" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Hogarix" />
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+    />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Splash screen (pantalla de bienvenida). Se oculta desde js/app.js -->
+    <div id="splash" class="splash" aria-hidden="true">
+      <div class="splash__glow splash__glow--1"></div>
+      <div class="splash__glow splash__glow--2"></div>
+
+      <div class="splash__center">
+        <div class="splash__logo">
+          <svg viewBox="0 0 512 512" width="56" height="56">
+            <path d="M128 236 256 140l128 96v144a16 16 0 0 1-16 16H144a16 16 0 0 1-16-16z" fill="none" stroke="#AAFF6B" stroke-width="32" stroke-linejoin="round" />
+            <path d="M216 396v-96h80v96" fill="none" stroke="#AAFF6B" stroke-width="32" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <h1 class="splash__name">Hogar<span>ix</span></h1>
+        <p class="splash__tagline">Tu hogar en buenas manos</p>
+      </div>
+
+      <div class="splash__bottom">
+        <div class="splash__loader"><div></div></div>
+        <p class="splash__caption">Especialistas verificados cerca de ti</p>
+      </div>
+    </div>
+
+    <div class="app">
+      <!-- Aquí se pinta la pantalla activa (Inicio, Búsqueda, Chat o Perfil) -->
+      <main id="view" class="view"></main>
+
+      <!-- Aquí se pintan las hojas/modales (especialista, pago, emergencia) -->
+      <div id="modal-root"></div>
+
+      <!-- Barra de navegación inferior -->
+      <nav id="bottom-nav" class="bottom-nav"></nav>
+    </div>
+
+    <!-- Scripts (el orden importa) -->
+    <script src="js/data.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/screens/inicio.js"></script>
+    <script src="js/screens/busqueda.js"></script>
+    <script src="js/screens/chat.js"></script>
+    <script src="js/screens/perfil.js"></script>
+    <script src="js/screens/especialista.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

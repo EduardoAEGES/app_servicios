@@ -1,0 +1,10 @@
+{
+  "description": "Connect with home service professionals through user-friendly profiles, enabling clients to find and hire specialists for their needs quickly and easily.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
