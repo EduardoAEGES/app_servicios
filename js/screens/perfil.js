@@ -32,7 +32,7 @@ function renderPerfil() {
             ${
               state.auth.isGuest
                 ? `<span class="badge badge--soft" style="margin-right:6px">Modo Invitado</span> · <a href="#" data-action="open-register" style="color:var(--lime);font-weight:700">Registrarme</a>`
-                : `<span class="badge badge--green" style="margin-right:6px">✓ Registrado</span> · Miembro Hogarix`
+                : `<span class="badge badge--green" style="margin-right:6px">✓ Registrado</span> · Miembro ArreglaYa`
             }
           </p>
         </div>

@@ -120,7 +120,7 @@ function renderInicio() {
       </section>
 
       <div class="how-box">
-        <div class="how-box__title">¿Cómo funciona Hogarix?</div>
+        <div class="how-box__title">¿Cómo funciona ArreglaYa?</div>
         <div class="how-box__steps">
           ${steps
             .map(

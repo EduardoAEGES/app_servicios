@@ -1,4 +1,4 @@
-# Hogarix · Servicios para el hogar (PWA)
+# ArreglaYa · Servicios para el hogar (PWA)
 
 App web móvil hecha con **HTML, CSS y JavaScript puros** (sin React, sin compilar).
 
@@ -42,6 +42,6 @@ react-original/            Copia de la versión anterior en React (solo referenc
 - **Qué hace un botón:** busca su `data-action="..."` en `js/app.js` (objeto `actions`).
 
 Si publicas cambios y el teléfono sigue mostrando la versión vieja, sube la versión
-`CACHE` en `sw.js` (por ejemplo `hogarix-v2`).
+`CACHE` en `sw.js` (por ejemplo `arreglaya-v2`).
 # servicios_hogar
 # app_servicios

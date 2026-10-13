@@ -67,7 +67,7 @@ function renderPortada() {
               <path d="M216 396v-96h80v96" fill="none" stroke="#AAFF6B" stroke-width="36" stroke-linejoin="round" />
             </svg>
           </div>
-          <span class="portada-nav__name">Hogar<span>ix</span></span>
+          <span class="portada-nav__name">Arregla<span>Ya</span></span>
         </div>
 
         <div class="portada-nav__actions">
@@ -159,7 +159,7 @@ function renderPortada() {
       <!-- Beneficios clave -->
       <section class="portada-section">
         <div class="portada-sec-head">
-          <span class="portada-sec-tag">¿POR QUÉ HOGARIX?</span>
+          <span class="portada-sec-tag">¿POR QUÉ ARREGLAYA?</span>
           <h2 class="portada-sec-title">Tu tranquilidad garantizada</h2>
         </div>
 
@@ -190,7 +190,7 @@ function renderPortada() {
             <button class="btn btn-ghost" data-action="continue-guest">Entrar como invitado</button>
           </div>
         </div>
-        <p class="portada-footer__copy">Hogarix © 2026 · Soluciones profesionales para el hogar · Arequipa, Perú</p>
+        <p class="portada-footer__copy">ArreglaYa © 2026 · Soluciones profesionales para el hogar · Arequipa, Perú</p>
       </footer>
     </div>`;
 }
@@ -210,7 +210,7 @@ function renderAuthModal() {
         <div class="modal-head modal-head--between">
           <div>
             <h3 class="modal-head__title modal-head__title--lg">
-              ${isReg ? "Crear cuenta en Hogarix" : "Iniciar sesión"}
+              ${isReg ? "Crear cuenta en ArreglaYa" : "Iniciar sesión"}
             </h3>
             <p class="modal-head__sub">
               ${isReg ? "Accede a técnicos verificados y guarda tus servicios" : "Ingresa a tu cuenta para ver tus solicitudes"}
@@ -276,7 +276,7 @@ function authRegisterForm() {
       </div>
 
       <button class="btn btn-primary btn--block btn--lg" data-action="auth-submit-register">
-        Registrarme y acceder a Hogarix →
+        Registrarme y acceder a ArreglaYa →
       </button>
     </form>`;
 }

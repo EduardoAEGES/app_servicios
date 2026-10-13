@@ -4,7 +4,7 @@
    sube el número de versión de CACHE.
    ========================================================= */
 
-const CACHE = "hogarix-v2";
+const CACHE = "arreglaya-v2";
 
 const APP_FILES = [
   "./",

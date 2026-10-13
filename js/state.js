@@ -30,27 +30,27 @@ const storage = {
 
   // Helpers específicos
   getUser() {
-    return this.get("hogarix_user", null);
+    return this.get("arreglaya_user", null);
   },
 
   saveUser(user) {
-    this.set("hogarix_user", user);
+    this.set("arreglaya_user", user);
   },
 
   getChatMessages() {
-    return this.get("hogarix_chat_messages", null);
+    return this.get("arreglaya_chat_messages", null);
   },
 
   saveChatMessages(messages) {
-    this.set("hogarix_chat_messages", messages);
+    this.set("arreglaya_chat_messages", messages);
   },
 
   getBookings() {
-    return this.get("hogarix_bookings", null);
+    return this.get("arreglaya_bookings", null);
   },
 
   saveBookings(bookingsList) {
-    this.set("hogarix_bookings", bookingsList);
+    this.set("arreglaya_bookings", bookingsList);
   },
 };
 
