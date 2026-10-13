@@ -21,7 +21,16 @@ function renderInicio() {
     { n: "03", t: "Paga al finalizar", d: "Solo pagas cuando termina el trabajo." },
   ];
 
+  const guestNotice = state.auth.isGuest
+    ? `
+    <div class="guest-banner">
+      <span>Estás explorando en <strong>modo invitado</strong></span>
+      <button class="guest-banner__btn" data-action="open-register">Crear cuenta</button>
+    </div>`
+    : "";
+
   return `
+    ${guestNotice}
     <div class="hero">
       <div class="hero__circle hero__circle--1"></div>
       <div class="hero__circle hero__circle--2"></div>
@@ -36,6 +45,27 @@ function renderInicio() {
           <span>Buscar servicio o especialista…</span>
         </button>
 
+        <!-- Tarjeta destacada de chat con técnico para mostrar averías de casa -->
+        <div class="tech-card-cta" data-action="open-tech-diagnosis">
+          <div class="tech-card-cta__badge">
+            <span class="live-dot live-dot--sm"></span> TÉCNICO EN LÍNEA
+          </div>
+          <div class="tech-card-cta__main">
+            <div class="tech-card-cta__avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=100&h=100&fit=crop" class="tech-card-cta__avatar" alt="Roberto Medina">
+              <span class="verified-dot-corner">✓</span>
+            </div>
+            <div class="tech-card-cta__info">
+              <div class="tech-card-cta__title">¿Avería en casa? Chatea con un técnico</div>
+              <p class="tech-card-cta__desc">Envía fotos de tu problema y recibe diagnóstico y presupuesto claro al instante</p>
+            </div>
+          </div>
+          <div class="tech-card-cta__footer">
+            <span class="tech-card-cta__chips">💧 Plomería · ⚡ Electricidad · 🔑 Chapa</span>
+            <span class="tech-card-cta__btn">Mostrar mi problema →</span>
+          </div>
+        </div>
+
         <button class="emergency-btn" data-action="open-emergency">
           <span class="emergency-btn__icon">🚨</span>
           <div class="emergency-btn__text">
@@ -48,6 +78,31 @@ function renderInicio() {
     </div>
 
     <div class="home-body">
+      <!-- Sección de diagnóstico rápido con fotos -->
+      <section class="home-section">
+        <div class="section-head">
+          <div>
+            <span class="section-title">Diagnóstico con técnicos</span>
+            <span class="section-sub-tag">Muestra tu problema</span>
+          </div>
+          <button class="link-btn" data-action="open-tech-diagnosis">Ver chat →</button>
+        </div>
+        <div class="home-quick-problems">
+          ${problemPresets
+            .map(
+              (p) => `
+            <button class="home-problem-chip" data-action="chat-quick-preset" data-preset="${p.id}">
+              <img src="${p.photo}" class="home-problem-chip__img" alt="${esc(p.label)}">
+              <div class="home-problem-chip__body">
+                <span class="home-problem-chip__label">${p.icon} ${esc(p.label)}</span>
+                <span class="home-problem-chip__cost">Desde S/.${p.estimatedCost}</span>
+              </div>
+            </button>`
+            )
+            .join("")}
+        </div>
+      </section>
+
       <section class="home-section">
         <div class="section-head">
           <span class="section-title">Servicios</span>

@@ -141,21 +141,37 @@ const reviewsMap = {
   ],
 };
 
-/* Conversaciones del chat */
+/* Conversaciones del chat con soporte técnico interactivo y fotos */
 const conversations = [
   {
     id: 1,
     specialistId: 1,
     specialist: "Roberto Medina",
     photo: "https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=80&h=80&fit=crop&auto=format",
-    trade: "Plomería",
-    time: "10:42",
+    trade: "Plomería & Diagnóstico",
+    time: "Ahora",
     unread: 1,
+    status: "En línea",
+    badge: "Diagnóstico en vivo",
     messages: [
-      { from: "me", text: "Hola Roberto, tengo una fuga debajo del lavabo.", time: "10:30" },
-      { from: "them", text: "Hola! ¿Desde cuándo ocurre la fuga? ¿Es constante o solo cuando abre el agua?", time: "10:35" },
-      { from: "me", text: "Es constante, desde ayer. Hay algo de humedad en el mueble.", time: "10:38" },
-      { from: "them", text: "Claro, puedo ir el viernes por la mañana.", time: "10:42" },
+      {
+        from: "me",
+        text: "Hola maestro Roberto, tengo una fuga constante bajo el lavabo. Aquí le adjunto la foto del problema:",
+        photo: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&h=450&fit=crop&auto=format",
+        photoLabel: "Avería: Fuga en codo de desagüe",
+        time: "10:30",
+      },
+      {
+        from: "them",
+        text: "¡Hola Carlos! Ya revisé la foto detalladamente. Se nota que el empaque cónico del sifón se ha resecado y la rosca perdió estanqueidad. Cierra la llave angular de paso por seguridad. Llevo repuesto nuevo de PVC de 1 1/2\", empaquetadura y sellador teflón para repararlo en unos 30 minutos.",
+        audioNote: { duration: "0:24" },
+        quote: {
+          title: "Presupuesto sugerido de reparación",
+          amount: 65,
+          desc: "Mano de obra + cambio de junta y prueba hidráulica",
+        },
+        time: "10:32",
+      },
     ],
   },
   {
@@ -166,6 +182,7 @@ const conversations = [
     trade: "Limpieza",
     time: "Ayer",
     unread: 0,
+    status: "Desconectada",
     messages: [
       { from: "me", text: "Sofía, ¿tienes disponibilidad este sábado para limpieza profunda?", time: "Ayer 15:00" },
       { from: "them", text: "Sí, tengo disponible de 9am a 1pm. ¿Cuántos m² es el departamento?", time: "Ayer 15:10" },
@@ -181,14 +198,133 @@ const conversations = [
     trade: "Electricidad",
     time: "Lun",
     unread: 0,
+    status: "En línea",
     messages: [
       { from: "me", text: "Valentina, necesito cambiar el centro de carga de mi casa.", time: "Lun 11:00" },
       { from: "them", text: "Entendido. ¿Cuántos circuitos tiene actualmente y cuántos necesitas?", time: "Lun 11:15" },
       { from: "me", text: "Actualmente 8, necesitaría unos 14 o 16.", time: "Lun 11:20" },
-      { from: "them", text: "El presupuesto para el centro de carga sería S/.2,800.", time: "Lun 11:35" },
+      { from: "them", text: "El presupuesto para el centro de carga sería S/.2,800 con llaves termomagnéticas Schneider.", time: "Lun 11:35" },
     ],
   },
 ];
+
+/* Plantillas de problemas comunes en casa para diagnóstico rápido */
+const problemPresets = [
+  {
+    id: "fuga",
+    category: "plomeria",
+    label: "Fuga de agua",
+    title: "Tubería con goteo constante",
+    subtitle: "Filtración bajo mueble o lavadero",
+    icon: "💧",
+    color: "#2D7A56",
+    specialistId: 1,
+    photo: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&h=450&fit=crop&auto=format",
+    userPrompt: "Maestro, tengo esta fuga de agua debajo del lavabo, está goteando y mojando el piso.",
+    techResponse: "¡Hola! Viendo la foto que enviaste, la tuerca de acople y el empaque cónico están fisurados. Cierra la llave de paso de abajo para que no dañe el mueble. Voy con repuesto de PVC y teflón para resolverlo en 30 minutos.",
+    audioDuration: "0:24",
+    estimatedCost: 65,
+  },
+  {
+    id: "electricidad",
+    category: "electricidad",
+    label: "Cortocircuito",
+    title: "Enchufe quemado / Salta llave",
+    subtitle: "Tomacorriente con chispas o sin energía",
+    icon: "⚡",
+    color: "#245C40",
+    specialistId: 2,
+    photo: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=450&fit=crop&auto=format",
+    userPrompt: "Hola Valentina, este enchufe sacó chispas y huele a quemado, la llave del tablero se bajó.",
+    techResponse: "¡Hola! Por seguridad no intentes rearmar la llave térmica hasta revisar. En la foto se ve recalentamiento en los bornes. Llevo multímetro y reemplazo Bticino para dejarlo seguro.",
+    audioDuration: "0:28",
+    estimatedCost: 75,
+  },
+  {
+    id: "cerradura",
+    category: "cerrajeria",
+    label: "Chapa atascada",
+    title: "Cerradura no gira / trabada",
+    subtitle: "Puerta principal bloqueada",
+    icon: "🔑",
+    color: "#0D2B1F",
+    specialistId: 1,
+    photo: "https://images.unsplash.com/photo-1558002038-1055907df827?w=600&h=450&fit=crop&auto=format",
+    userPrompt: "Maestro Roberto, la llave se quedó atascada en la cerradura principal y no gira ni sale.",
+    techResponse: "Hola. Por la foto veo que los pines del bombín se han cruzado. No fuerces la llave para que no se parta adentro. Llevo extractor de cilindros y lubricante para destrabarla en 15 minutos.",
+    audioDuration: "0:19",
+    estimatedCost: 50,
+  },
+  {
+    id: "humedad",
+    category: "pintura",
+    label: "Humedad en muro",
+    title: "Pared inflada / Filtración",
+    subtitle: "Desprendimiento de pintura o moho",
+    icon: "🧱",
+    color: "#52B788",
+    specialistId: 5,
+    photo: "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?w=600&h=450&fit=crop&auto=format",
+    userPrompt: "Buenas, tengo esta mancha de humedad y la pintura se está descascarando en la pared.",
+    techResponse: "Hola. En la imagen se evidencia humedad por capilaridad o posible fuga interna. Llevo medidor de humedad para detectar el origen exacto, raspar y aplicar impermeabilizante antihongos.",
+    audioDuration: "0:22",
+    estimatedCost: 85,
+  },
+];
+
+/* Datos de la portada y testimonios */
+const portadaData = {
+  hero: {
+    tag: "Servicio #1 para el Hogar en Arequipa",
+    title: "Soluciona cualquier avería en tu hogar con técnicos en directo",
+    subtitle: "Muestra tu problema por foto, conversa al instante con especialistas verificados y recibe presupuesto claro antes de contratar.",
+    stats: [
+      { num: "2,500+", label: "Hogares atendidos" },
+      { num: "4.9 ★", label: "Calificación media" },
+      { num: "15 min", label: "Respuesta promedio" },
+    ],
+  },
+  features: [
+    {
+      icon: "📸",
+      title: "Muestra tu problema con fotos",
+      desc: "Sube una imagen de la fuga, cortocircuito o avería para que el técnico lo evalúe al instante.",
+    },
+    {
+      icon: "💬",
+      title: "Chat interactivo en vivo",
+      desc: "Conversa con el técnico antes de pagar, recibe notas de voz y resuelve dudas técnicas.",
+    },
+    {
+      icon: "🛡️",
+      title: "Técnicos 100% verificados",
+      desc: "Profesionales con antecedentes revisados, cédula oficial y garantía escrita de trabajo.",
+    },
+    {
+      icon: "💰",
+      title: "Paga solo al finalizar",
+      desc: "Sin cobros sorpresa por adelantado. Paga con tarjeta, Yape o efectivo cuando el trabajo esté listo.",
+    },
+  ],
+  testimonials: [
+    {
+      name: "Mariana Alarcón",
+      district: "Cayma, Arequipa",
+      photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop",
+      text: "Le envié una foto de la fuga de la terma a Roberto y en 2 minutos ya sabía qué pieza fallaba. Vino con el repuesto exacto. ¡Increíble!",
+      rating: 5,
+      service: "Plomería",
+    },
+    {
+      name: "Gonzalo Valdivia",
+      district: "Yanahuara",
+      photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&h=120&fit=crop",
+      text: "La chapa de la puerta se trabó a las 9pm. Pude mostrarle el tipo de cerradura por chat al técnico y en 25 minutos ya estaba en mi casa.",
+      rating: 5,
+      service: "Cerrajería urgente",
+    },
+  ],
+};
 
 /* Categorías del formulario de emergencia */
 const emergencyCategories = [

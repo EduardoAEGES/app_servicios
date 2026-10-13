@@ -28,7 +28,13 @@ function renderPerfil() {
         </div>
         <div>
           <h2 class="profile-name">${esc(p.name)}</h2>
-          <p class="profile-sub">Cliente · Miembro desde ago 2025</p>
+          <p class="profile-sub">
+            ${
+              state.auth.isGuest
+                ? `<span class="badge badge--soft" style="margin-right:6px">Modo Invitado</span> · <a href="#" data-action="open-register" style="color:var(--lime);font-weight:700">Registrarme</a>`
+                : `<span class="badge badge--green" style="margin-right:6px">✓ Registrado</span> · Miembro Hogarix`
+            }
+          </p>
         </div>
       </div>
 
@@ -142,6 +148,6 @@ function renderAccount() {
         <button class="cta-box__btn">Crear perfil profesional</button>
       </div>
 
-      <button class="logout-btn">Cerrar sesión</button>
+      <button class="logout-btn" data-action="logout">Cerrar sesión / Salir a portada</button>
     </div>`;
 }

@@ -4,7 +4,7 @@
    sube el número de versión de CACHE.
    ========================================================= */
 
-const CACHE = "hogarix-v1";
+const CACHE = "hogarix-v2";
 
 const APP_FILES = [
   "./",
@@ -14,6 +14,7 @@ const APP_FILES = [
   "./js/data.js",
   "./js/state.js",
   "./js/components.js",
+  "./js/screens/portada.js",
   "./js/screens/inicio.js",
   "./js/screens/busqueda.js",
   "./js/screens/chat.js",
